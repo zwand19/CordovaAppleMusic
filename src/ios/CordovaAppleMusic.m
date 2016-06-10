@@ -9,7 +9,7 @@
 
     CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_OK
-                               NSNumber numberWithBool:NO];
+                               messageAsBool:NO];
 
     [self.commandDelegate sendPluginResult:result callbackId:callbackId];
 }
