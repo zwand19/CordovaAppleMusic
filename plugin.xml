@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="com.example.hello"
+        version="0.7.0">
+
+  <name>Cordova Apple Music</name>
+
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
+
+  <asset src="www/cordovaAppleMusic.js" target="js/cordovaAppleMusic.js"/>
+
+  <js-module src="www/cordovaAppleMusic.js" name="cordovaAppleMusic">
+    <clobbers target="cordovaAppleMusic" />
+  </js-module>
+
+  <platform name="ios">
+    <config-file target="config.xml" parent="/widget">
+      <feature name="AppleMusic">
+        <param name="ios-package" value="CordovaAppleMusic" />
+      </feature>
+    </config-file>
+
+    <header-file src="src/ios/CordovaAppleMusic.h" target-dir="HelloPlugin"/>
+    <source-file src="src/ios/CordovaAppleMusic.m" target-dir="HelloPlugin"/>
+
+  </platform>
+</plugin>
