@@ -22,8 +22,8 @@
       </feature>
     </config-file>
 
-    <header-file src="src/ios/CordovaAppleMusic.h" target-dir="HelloPlugin"/>
-    <source-file src="src/ios/CordovaAppleMusic.m" target-dir="HelloPlugin"/>
+    <header-file src="src/ios/CordovaAppleMusic.h" target-dir="CordovaAppleMusicPlugin"/>
+    <source-file src="src/ios/CordovaAppleMusic.m" target-dir="CordovaAppleMusicPlugin"/>
 
   </platform>
 </plugin>

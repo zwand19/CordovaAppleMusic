@@ -2,6 +2,6 @@
 
 @interface CordovaAppleMusic : CDVPlugin
 
-- (void) greet:(CDVInvokedUrlCommand*)command;
+- (void) isActive:(CDVInvokedUrlCommand*)command;
 
 @end
