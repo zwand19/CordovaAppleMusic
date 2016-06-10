@@ -2,6 +2,6 @@
 
 module.exports = {
     isActive: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "CordovaAppleMusic", "isActive");
+        cordova.exec(successCallback, errorCallback, "AppleMusic", "isActive");
     }
 };

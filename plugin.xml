@@ -9,21 +9,22 @@
     <engine name="cordova" version=">=3.4.0"/>
   </engines>
 
-  <asset src="www/cordovaAppleMusic.js" target="js/cordovaAppleMusic.js"/>
+  <asset src="www/appleMusicPlugin.js" target="js/appleMusicPlugin.js"/>
 
-  <js-module src="www/cordovaAppleMusic.js" name="cordovaAppleMusic">
-    <clobbers target="cordovaAppleMusic" />
+  <js-module src="www/appleMusicPlugin.js" name="appleMusicPlugin">
+    <clobbers target="appleMusicPlugin" />
   </js-module>
 
   <platform name="ios">
     <config-file target="config.xml" parent="/widget">
       <feature name="AppleMusic">
         <param name="ios-package" value="CordovaAppleMusic" />
+        <param name="onload" value="true" />
       </feature>
     </config-file>
 
-    <header-file src="src/ios/CordovaAppleMusic.h" target-dir="CordovaAppleMusicPlugin"/>
-    <source-file src="src/ios/CordovaAppleMusic.m" target-dir="CordovaAppleMusicPlugin"/>
+    <header-file src="src/ios/CordovaAppleMusic.h" target-dir="AppleMusic"/>
+    <source-file src="src/ios/CordovaAppleMusic.m" target-dir="AppleMusic"/>
 
   </platform>
 </plugin>
