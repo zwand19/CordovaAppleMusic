@@ -11,7 +11,7 @@
                                resultWithStatus:CDVCommandStatus_OK
                                NSNumber numberWithBool:NO];
 
-    [self success:result callbackId:callbackId];
+    [self.commandDelegate sendPluginResult:result callbackId:callbackId];
 }
 
 @end
