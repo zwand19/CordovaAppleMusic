@@ -11,9 +11,13 @@ Allows applications to determine whether or not the phone has a registered Apple
 appleMusicPlugin.getStatus(function(statusCode){}, failureFunction)
 ```
 0 - SKCloudServiceAuthorizationStatusNotDetermined
+
 1 - SKCloudServiceAuthorizationStatusDenied
+
 2 - SKCloudServiceAuthorizationStatusAuthorized
+
 3 - SKCloudServiceAuthorizationStatusRestricted
+
 [enum documentation](https://developer.apple.com/library/ios/documentation/StoreKit/Reference/SKCloudServiceController_Class/#//apple_ref/c/tdef/SKCloudServiceAuthorizationStatus)
 
 ```
@@ -26,4 +30,6 @@ of queueing songs for playback.
 ```
 appleMusicPlugin.playTrack(trackId, successFunction, failureFunction)
 ```
-Queues a track, by id, to be played. Example id: https://itunes.apple.com/fr/album/unstoppable/id984653860?i=<b>984653861</b>
+Queues a track, by id, to be played.
+
+Example id: itunes.apple.com/fr/album/unstoppable/id984653860?i=<b>984653861</b>
