@@ -5,7 +5,7 @@ module.exports = {
         cordova.exec(successCallback, errorCallback, "AppleMusic", "getStatus");
     },
     playTrack: function (trackId, successCallback, errorCallback) {
-        cordova.exec(trackId, successCallback, errorCallback, "AppleMusic", "playTrack");
+        cordova.exec(successCallback, errorCallback, "AppleMusic", "playTrack", [trackId]);
     },
     requestAuthorization: function (successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "AppleMusic", "requestAuthorization");
