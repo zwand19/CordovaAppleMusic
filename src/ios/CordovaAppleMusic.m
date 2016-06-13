@@ -4,7 +4,7 @@
 
 @implementation CordovaAppleMusic
 
-- (void)getStatus:(CDVInvokedUrlCommand*)command
+- (void)isActive:(CDVInvokedUrlCommand*)command
 {
 
     NSString* callbackId = [command callbackId];
@@ -27,6 +27,19 @@
                                messageAsInt:res];
 
     [self.commandDelegate sendPluginResult:result callbackId:callbackId];
+}
+
+- (void)requestAuthorization:(CDVInvokedUrlCommand*)command
+{
+    NSString* callbackId = [command callbackId];
+    [SKCloudServiceController requestAuthorization:^(SKCloudServiceAuthorizationStatus status) {
+        SKCloudServiceController *cloudServiceController = [[SKCloudServiceController alloc] init];
+        [cloudServiceController requestCapabilitiesWithCompletionHandler:^(SKCloudServiceCapability capabilities, NSError * _Nullable error) {
+            bool isCapable = (capabilities >= SKCloudServiceCapabilityAddToCloudMusicLibrary || capabilities==SKCloudServiceCapabilityMusicCatalogPlayback);
+            CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:isCapable];
+            [self.commandDelegate sendPluginResult:result callbackId:callbackId];
+        }];
+    }];
 }
 
 @end
