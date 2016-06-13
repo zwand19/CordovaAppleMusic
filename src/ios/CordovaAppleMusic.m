@@ -4,7 +4,7 @@
 
 @implementation CordovaAppleMusic
 
-- (void)isActive:(CDVInvokedUrlCommand*)command
+- (void)getStatus:(CDVInvokedUrlCommand*)command
 {
 
     NSString* callbackId = [command callbackId];
