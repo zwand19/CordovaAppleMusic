@@ -55,4 +55,14 @@
      }];
 }
 
+- (void)getStorefrontID:(CDVInvokedUrlCommand*)command
+{
+    NSString* callbackId = [command callbackId];
+    SKCloudServiceController *cloudServiceController = [[SKCloudServiceController alloc] init];
+    [cloudServiceController requestStorefrontIdentifierWithCompletionHandler:^(NSString *storefrontIdentifier, NSError *error) {
+        CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:storefrontIdentifier];
+        [self.commandDelegate sendPluginResult:result callbackId:callbackId];
+    }];
+}
+
 @end

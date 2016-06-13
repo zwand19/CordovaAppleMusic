@@ -9,5 +9,8 @@ module.exports = {
     },
     requestAuthorization: function (successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "AppleMusic", "requestAuthorization");
+    },
+    getStorefrontID: function (successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "AppleMusic", "getStorefrontID");
     }
 };
