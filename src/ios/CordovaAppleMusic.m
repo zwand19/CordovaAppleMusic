@@ -1,9 +1,23 @@
 #import "CordovaAppleMusic.h"
 
+@import NotificationCenter;
 @import MediaPlayer;
 @import StoreKit;
 
 @implementation CordovaAppleMusic
+
+- (void)init:(CDVInvokedUrlCommand*)command
+{
+    NSString* callbackId = [command callbackId];
+    
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self selector:@selector(handlePlaybackStateChanged:) name:MPMusicPlayerControllerPlaybackStateDidChangeNotification object:[MPMusicPlayerController systemMusicPlayer]];
+    
+    [[MPMusicPlayerController systemMusicPlayer] beginGeneratingPlaybackNotifications];
+    
+    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:YES];
+    [self.commandDelegate sendPluginResult:result callbackId:callbackId];
+}
 
 - (void)getStatus:(CDVInvokedUrlCommand*)command
 {
@@ -53,6 +67,15 @@
          CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:YES];
          [self.commandDelegate sendPluginResult:result callbackId:callbackId];
      }];
+}
+
+- (void)handlePlaybackStateChanged:(NSNotification*)notification
+{
+    if ([MPMusicPlayerController systemMusicPlayer].playbackState == MPMusicPlaybackStateStopped ||
+        [MPMusicPlayerController systemMusicPlayer].playbackState == MPMusicPlaybackStateInterrupted ||
+        [MPMusicPlayerController systemMusicPlayer].playbackState == MPMusicPlaybackStatePaused) {
+        [self.commandDelegate evalJs:@"window.appleMusicPluginStoppedPlaying()"];
+    }
 }
 
 @end
