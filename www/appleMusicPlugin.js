@@ -9,7 +9,7 @@ module.exports = {
     },
     onStopPlaying: function(f) {
       window.appleMusicPluginStoppedPlaying = f
-    }
+    },
     playTrack: function (trackId, successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "AppleMusic", "playTrack", [trackId]);
     },
