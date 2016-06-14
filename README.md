@@ -63,10 +63,12 @@ Returns the current track's position in the callback
 appleMusicPlugin.onStop(callback)
 ```
 Called whenever an apple music track is stopped, interrupted, or paused.
+#### Track seeked
 ```
 appleMusicPlugin.onSeek(callback)
 ```
 Called when the user seeks a new position within a track
+#### Track started playing
 ```
 appleMusicPlugin.onPlay(callback)
 ```
