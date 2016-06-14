@@ -44,10 +44,30 @@ Queues a track by id.
 
 Example id: itunes.apple.com/fr/album/unstoppable/id984653860?i=<b>984653861</b>
 
+#### Get Current Track Duration
+```
+appleMusicPlugin.getDuration(successFunction, failureFunction)
+```
+Returns the current track's duration in the callback
+
+#### Get Current Track Position
+```
+appleMusicPlugin.getPosition(successFunction, failureFunction)
+```
+Returns the current track's position in the callback
+
 ### EVENTS
 
 #### Track stopped playing
 ```
-appleMusicPlugin.onStopPlaying(callback)
+appleMusicPlugin.onStop(callback)
 ```
 Called whenever an apple music track is stopped, interrupted, or paused.
+```
+appleMusicPlugin.onSeek(callback)
+```
+Called when the user seeks a new position within a track
+```
+appleMusicPlugin.onPlay(callback)
+```
+Called whenever an apple music track starts playing

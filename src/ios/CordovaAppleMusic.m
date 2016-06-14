@@ -21,7 +21,6 @@
 
 - (void)getStatus:(CDVInvokedUrlCommand*)command
 {
-
     NSString* callbackId = [command callbackId];
     
     SKCloudServiceAuthorizationStatus status = [SKCloudServiceController authorizationStatus];
@@ -36,7 +35,7 @@
         case SKCloudServiceAuthorizationStatusRestricted: res = 3; break;
         default: callbackStatus = CDVCommandStatus_ERROR;
     }
-
+    
     CDVPluginResult* result = [CDVPluginResult resultWithStatus:callbackStatus messageAsInt:res];
     [self.commandDelegate sendPluginResult:result callbackId:callbackId];
 }
@@ -69,12 +68,65 @@
      }];
 }
 
+- (void)getDuration:(CDVInvokedUrlCommand*)command
+{
+    NSString* callbackId = [command callbackId];
+    
+    NSNumber *duration = [[MPMusicPlayerController systemMusicPlayer].nowPlayingItem valueForProperty:MPMediaItemPropertyPlaybackDuration];
+    
+    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDouble:[duration doubleValue]];
+    [self.commandDelegate sendPluginResult:result callbackId:callbackId];
+}
+
+- (void)getPosition:(CDVInvokedUrlCommand*)command
+{
+    NSString* callbackId = [command callbackId];
+    
+    double position = [MPMusicPlayerController systemMusicPlayer].currentPlaybackTime;
+    
+    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDouble: position];
+    [self.commandDelegate sendPluginResult:result callbackId:callbackId];
+}
+
+- (void)resume:(CDVInvokedUrlCommand*)command
+{
+    NSString* callbackId = [command callbackId];
+    
+    [[MPMusicPlayerController systemMusicPlayer] play];
+    
+    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:result callbackId:callbackId];
+}
+
+- (void)pause:(CDVInvokedUrlCommand*)command
+{
+    NSString* callbackId = [command callbackId];
+    
+    [[MPMusicPlayerController systemMusicPlayer] pause];
+    
+    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:result callbackId:callbackId];
+}
+
+- (void)stop:(CDVInvokedUrlCommand*)command
+{
+    NSString* callbackId = [command callbackId];
+    
+    [[MPMusicPlayerController systemMusicPlayer] stop];
+    
+    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:result callbackId:callbackId];
+}
+
 - (void)handlePlaybackStateChanged:(NSNotification*)notification
 {
-    if ([MPMusicPlayerController systemMusicPlayer].playbackState == MPMusicPlaybackStateStopped ||
-        [MPMusicPlayerController systemMusicPlayer].playbackState == MPMusicPlaybackStateInterrupted ||
-        [MPMusicPlayerController systemMusicPlayer].playbackState == MPMusicPlaybackStatePaused) {
-        [self.commandDelegate evalJs:@"window.appleMusicPluginStoppedPlaying()"];
+    MPMusicPlaybackState state = [MPMusicPlayerController systemMusicPlayer].playbackState;
+    if (state == MPMusicPlaybackStateStopped || state == MPMusicPlaybackStateInterrupted || state == MPMusicPlaybackStatePaused) {
+        [self.commandDelegate evalJs:@"window.appleMusicPluginStopped()"];
+    } else if (state == MPMusicPlaybackStateSeekingForward || state == MPMusicPlaybackStateSeekingBackward) {
+        [self.commandDelegate evalJs:@"window.appleMusicPluginSeeked()"];
+    } else if (state == MPMusicPlaybackStatePlaying) {
+        [self.commandDelegate evalJs:@"window.appleMusicPluginPlaying()"];
     }
 }
 
