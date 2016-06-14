@@ -1,7 +1,7 @@
 # Cordova Apple Music Plugin
 
 Allows applications to determine whether or not the phone has a registered Apple Music account. If it does, allows queueing up songs to be played in Apple Music. Also contains
-some methods to 
+some methods to manage the currently playing track.
 
 ```
 cordova plugin add cordova-plugin-apple-music
