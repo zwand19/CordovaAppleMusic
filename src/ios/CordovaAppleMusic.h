@@ -2,6 +2,7 @@
 
 @interface CordovaAppleMusic : CDVPlugin
 
+- (void) getCountryCode:(CDVInvokedUrlCommand*)command;
 - (void) getDuration:(CDVInvokedUrlCommand*)command;
 - (void) getPosition:(CDVInvokedUrlCommand*)command;
 - (void) getStatus:(CDVInvokedUrlCommand*)command;

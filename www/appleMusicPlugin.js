@@ -1,6 +1,9 @@
 /*global cordova, module*/
 
 module.exports = {
+    getCountryCode: function (successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "AppleMusic", "getCountryCode");
+    },
     getDuration: function (successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "AppleMusic", "getDuration");
     },

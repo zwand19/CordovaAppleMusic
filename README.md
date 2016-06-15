@@ -9,7 +9,7 @@ cordova plugin add cordova-plugin-apple-music
 
 ### API
 
-#### Initialize the plugin
+#### Initialize the Plugin
 ```
 appleMusicPlugin.init(successFunction, failureFunction)
 ```
@@ -36,6 +36,12 @@ appleMusicPlugin.requestAuthorization(function(isAuthorized){}, failureFunction)
 This will prompt the user asking if the application can have access to apple music. Calling this multiple times will not show the prompt more than once, if the user does not
 permit access the first time. Users must go into Settings -> AppName in order to grant access after the first prompt. Returns whether or not the phone will be app will be capable
 of queueing songs for playback.
+
+#### Get Country Code
+```
+appleMusicPlugin.getCountryCode(successFunction, failureFunction)
+```
+Returns the country code for the iTunes storefront
 
 #### Play a Track
 ```
