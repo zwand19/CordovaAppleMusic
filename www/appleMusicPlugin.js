@@ -1,5 +1,7 @@
 /*global cordova, module*/
-
+window.appleMusicPluginPlaying = (->)
+window.appleMusicPluginSeeked = (->)
+window.appleMusicPluginStopped = (->)
 module.exports = {
     getCountryCode: function (successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "AppleMusic", "getCountryCode");
@@ -17,13 +19,13 @@ module.exports = {
         cordova.exec(successCallback, errorCallback, "AppleMusic", "init");
     },
     onPlay: function(f) {
-      window.appleMusicPluginPlaying = f
+        window.appleMusicPluginPlaying = f
     },
     onSeek: function(f) {
-      window.appleMusicPluginSeeked = f
+        window.appleMusicPluginSeeked = f
     },
     onStop: function(f) {
-      window.appleMusicPluginStopped = f
+        window.appleMusicPluginStopped = f
     },
     pause: function (successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "AppleMusic", "pause");
