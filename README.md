@@ -63,13 +63,13 @@ The following methods will allow you to manipulate the currently playing track.
 ```
 appleMusicPlugin.getDuration(successFunction, failureFunction)
 ```
-Returns the current track's duration in the callback
+Returns the current track's duration (in seconds)
 
 #### Get Current Track Position
 ```
 appleMusicPlugin.getPosition(successFunction, failureFunction)
 ```
-Returns the current track's position in the callback
+Returns the current track's position (in seconds)
 
 #### Other Methods
 ```
@@ -81,7 +81,6 @@ appleMusicPlugin.seek(seconds, successFunction, failureFunction)
 
 appleMusicPlugin.stop(successFunction, failureFunction)
 ```
-Returns the current track's position in the callback
 
 ### EVENTS
 
