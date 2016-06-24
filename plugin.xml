@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
         id="cordova-plugin-apple-music"
-        version="0.2.2">
+        version="0.2.3">
 
   <name>Cordova Apple Music</name>
 
