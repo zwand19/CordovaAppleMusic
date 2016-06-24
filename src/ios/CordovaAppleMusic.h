@@ -11,6 +11,7 @@
 - (void) playTrack:(CDVInvokedUrlCommand*)command;
 - (void) requestAuthorization:(CDVInvokedUrlCommand*)command;
 - (void) resume:(CDVInvokedUrlCommand*)command;
+- (void) seek:(CDVInvokedUrlCommand*)command;
 - (void) stop:(CDVInvokedUrlCommand*)command;
 
 @end

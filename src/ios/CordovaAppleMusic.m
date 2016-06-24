@@ -269,6 +269,18 @@
     [self.commandDelegate sendPluginResult:result callbackId:callbackId];
 }
 
+- (void)seek:(CDVInvokedUrlCommand*)command
+{
+    NSString* callbackId = [command callbackId];
+    
+    NSString* seekTime = [[command arguments] objectAtIndex:0];
+    
+    [[MPMusicPlayerController systemMusicPlayer] setCurrentPlaybackTime: seekTime.doubleValue];
+    
+    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:result callbackId:callbackId];
+}
+
 - (void)handlePlaybackStateChanged:(NSNotification*)notification
 {
     MPMusicPlaybackState state = [MPMusicPlayerController systemMusicPlayer].playbackState;

@@ -39,6 +39,9 @@ module.exports = {
     resume: function (successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "AppleMusic", "resume");
     },
+    seek: function (seconds, successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "AppleMusic", "seek", [seconds]);
+    },
     stop: function (successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "AppleMusic", "stop");
     }
