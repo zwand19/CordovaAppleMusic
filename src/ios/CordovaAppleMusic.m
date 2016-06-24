@@ -55,17 +55,19 @@
 
 - (void)playTrack:(CDVInvokedUrlCommand*)command
 {
-    NSString* callbackId = [command callbackId];
-    NSString* productID = [[command arguments] objectAtIndex:0];
-    [[MPMediaLibrary defaultMediaLibrary] addItemWithProductID:productID completionHandler:^(NSArray<__kindof MPMediaEntity *> * _Nonnull entities, NSError * _Nullable error)
-     {
-         NSArray *tracksToPlay = [NSArray arrayWithObject:productID];
-         [[MPMusicPlayerController systemMusicPlayer] setQueueWithStoreIDs:tracksToPlay];
-         [[MPMusicPlayerController systemMusicPlayer] play];
+    [self.commandDelegate runInBackground:^{
+        NSString* callbackId = [command callbackId];
+        NSString* productID = [[command arguments] objectAtIndex:0];
+        [[MPMediaLibrary defaultMediaLibrary] addItemWithProductID:productID completionHandler:^(NSArray<__kindof MPMediaEntity *> * _Nonnull entities, NSError * _Nullable error)
+         {
+             NSArray *tracksToPlay = [NSArray arrayWithObject:productID];
+             [[MPMusicPlayerController systemMusicPlayer] setQueueWithStoreIDs:tracksToPlay];
+             [[MPMusicPlayerController systemMusicPlayer] play];
          
-         CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:YES];
-         [self.commandDelegate sendPluginResult:result callbackId:callbackId];
-     }];
+             CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:YES];
+             [self.commandDelegate sendPluginResult:result callbackId:callbackId];
+         }];
+    }];
 }
 
 -(void)getCountryCode:(CDVInvokedUrlCommand*)command
