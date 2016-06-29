@@ -4,19 +4,19 @@ window.appleMusicPluginSeeked = (function(){})
 window.appleMusicPluginStopped = (function(){})
 module.exports = {
     getCountryCode: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "AppleMusic", "getCountryCode");
+        cordova.exec(successCallback, errorCallback, "AppleMusic", "getCountryCode", []);
     },
     getDuration: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "AppleMusic", "getDuration");
+        cordova.exec(successCallback, errorCallback, "AppleMusic", "getDuration", []);
     },
     getPosition: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "AppleMusic", "getPosition");
+        cordova.exec(successCallback, errorCallback, "AppleMusic", "getPosition", []);
     },
     getStatus: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "AppleMusic", "getStatus");
+        cordova.exec(successCallback, errorCallback, "AppleMusic", "getStatus", []);
     },
     init: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "AppleMusic", "init");
+        cordova.exec(successCallback, errorCallback, "AppleMusic", "init", []);
     },
     onPlay: function(f) {
         window.appleMusicPluginPlaying = f
@@ -28,21 +28,21 @@ module.exports = {
         window.appleMusicPluginStopped = f
     },
     pause: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "AppleMusic", "pause");
+        cordova.exec(successCallback, errorCallback, "AppleMusic", "pause", []);
     },
     playTrack: function (trackId, successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "AppleMusic", "playTrack", [trackId]);
     },
     requestAuthorization: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "AppleMusic", "requestAuthorization");
+        cordova.exec(successCallback, errorCallback, "AppleMusic", "requestAuthorization", []);
     },
     resume: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "AppleMusic", "resume");
+        cordova.exec(successCallback, errorCallback, "AppleMusic", "resume", []);
     },
     seek: function (seconds, successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "AppleMusic", "seek", [seconds]);
     },
     stop: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "AppleMusic", "stop");
+        cordova.exec(successCallback, errorCallback, "AppleMusic", "stop", []);
     }
 };
